@@ -1,0 +1,18 @@
+package com.java.healthcare.repository;
+
+import com.java.healthcare.entity.Notification;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface NotificationRepository extends JpaRepository<Notification, Long> {
+
+    // Find Notifications by User ID
+    List<Notification> findByUserId(Long userId);
+
+    // Find Unread Notifications
+    List<Notification> findByUserIdAndIsReadFalse(Long userId);
+}
+
